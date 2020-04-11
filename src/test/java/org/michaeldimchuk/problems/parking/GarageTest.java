@@ -38,16 +38,16 @@ class GarageTest {
   @Test
   void parkTest() {
     Garage garage = new Garage(buildGaragePlan());
+    runParkingTest(garage, VehicleCategory.STANDARD);
+    runParkingTest(garage, VehicleCategory.SMALL);
+    runParkingTest(garage, VehicleCategory.LARGE);
+  }
 
-    Vehicle car = newVehicle(VehicleCategory.STANDARD);
-    Optional<ParkingAssignment> carAssignment = garage.park(car);
-    assertThat(carAssignment).isPresent();
-    verifyAssignment(carAssignment.get(), car);
-
-    Vehicle bus = newVehicle(VehicleCategory.LARGE);
-    Optional<ParkingAssignment> busAssignment = garage.park(bus);
-    assertThat(busAssignment).isPresent();
-    verifyAssignment(busAssignment.get(), bus);
+  private void runParkingTest(Garage garage, VehicleCategory category) {
+    Vehicle vehicle = newVehicle(category);
+    Optional<ParkingAssignment> assignment = garage.park(vehicle);
+    assertThat(assignment).isPresent();
+    verifyAssignment(assignment.get(), vehicle);
   }
 
   private void verifyAssignment(ParkingAssignment assignment, Vehicle vehicle) {
