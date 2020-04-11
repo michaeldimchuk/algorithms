@@ -1,0 +1,17 @@
+### IntelliJ IDEA ###
+.idea/*.xml
+.idea/codeStyles/*
+.idea/artifacts/*
+.idea/libraries/*
+!.idea/codeStyleSettings.xml
+!.idea/codeStyles/Project.xml
+!.idea/codeStyles/codeStyleConfig.xml
+*.iws
+*.iml
+*.ipr
+
+### Maven ##
+target
+target/
+/target/
+.flattened-pom.xml
