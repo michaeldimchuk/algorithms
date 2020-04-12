@@ -30,7 +30,6 @@ public class Graphs {
       if (context.getMatcher().test(nextNode.getValue())) {
         return retraceRoute(root, nextNode, context);
       } else {
-        // TODO handle predecessor updates
         handleMismatch(nextNode, context);
       }
     }
