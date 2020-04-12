@@ -1,6 +1,7 @@
 package org.michaeldimchuk.problems.parking;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.michaeldimchuk.utilities.GsonFactory.gson;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -15,7 +16,6 @@ import java.util.stream.IntStream;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.Test;
@@ -32,8 +32,6 @@ class GarageTest {
       VehicleCategory.STANDARD, Car::new,
       VehicleCategory.LARGE, Bus::new
   );
-
-  Gson gson = new Gson();
 
   @Test
   void parkTest() {
@@ -94,6 +92,6 @@ class GarageTest {
   private List<List<Map<VehicleCategory, Integer>>> buildLevelPlans() {
     InputStream stream = getClass().getResourceAsStream("parking-plan.json");
     Preconditions.checkNotNull(stream, "Unable to find parking-plan.json to configure test");
-    return gson.fromJson(new InputStreamReader(stream), GARAGE_PLAN);
+    return gson().fromJson(new InputStreamReader(stream), GARAGE_PLAN);
   }
 }

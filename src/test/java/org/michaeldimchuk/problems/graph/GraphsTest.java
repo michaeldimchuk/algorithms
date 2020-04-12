@@ -35,6 +35,24 @@ class GraphsTest {
     assertThat(values).containsExactly(0, 3, 4);
   }
 
+  @Test
+  void bfsTest() {
+    List<IntegerNode> nodes = buildGraph(
+        5,
+        Edge.of(0, 3),
+        Edge.of(0, 2),
+        Edge.of(1, 0),
+        Edge.of(2, 1),
+        Edge.of(3, 4),
+        Edge.of(4, 0)
+    );
+    List<GraphNode<Integer>> path = Graphs.bfs(nodes.get(0), value -> value == 4);
+    List<Integer> values = path.stream()
+        .map(GraphNode::getValue)
+        .collect(Collectors.toList());
+    assertThat(values).containsExactly(0, 3, 4);
+  }
+
   private List<IntegerNode> buildGraph(int nodeCount, Edge... edges) {
     List<IntegerNode> nodes = IntStream.range(0, nodeCount)
         .boxed()
