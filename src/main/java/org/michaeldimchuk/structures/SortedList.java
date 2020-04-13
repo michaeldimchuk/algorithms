@@ -44,6 +44,13 @@ public class SortedList<T extends Comparable<T>> {
     size++;
   }
 
+  /**
+   * Does a binary search on existing values to see where the provided value
+   * should go based on {@link Comparable} ordering.
+   *
+   * @param value The value to find an index for
+   * @return The index where the provided value would be in order at
+   */
   private int getInsertionIndex(T value) {
     // Null values are always on the left
     if (value == null) {

@@ -2,7 +2,7 @@ package org.michaeldimchuk.problems;
 
 import org.michaeldimchuk.structures.SortedList;
 
-public class RunningMedian {
+class RunningMedian {
 
   static double[] runningMedian(int[] input) {
     SortedList<Integer> values = new SortedList<>();
