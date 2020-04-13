@@ -7,4 +7,8 @@ public interface TreeNode<T> {
   TreeNode<T> getLeft();
 
   TreeNode<T> getRight();
+
+  default boolean isLeaf() {
+    return getLeft() == null && getRight() == null;
+  }
 }
